@@ -1,0 +1,123 @@
+<div *ngIf="data.walletType === 'wallet'" class="wallet">
+  <div class="modalheader">
+    <h5 fxFlex="50">Send ZYRK</h5>
+    <div _ngcontent-c7="" class="divider"></div>
+  </div>
+  <br/>
+  <div class="modalcontent">
+    <div class="amountsend">
+      <p style="font-weight: 700 !important">Amount to Send:</p>
+      <div fxLayout.gt-md="row" class="send-div">
+        <input class="modalinput" type="number" matInput fxFlex="100" placeholder="Amount" value="400" (ngModelChange)="getSendingAmount($event)"
+          [(ngModel)]="sendToZyrk.amount">
+        <span class="input-end-text">
+          ZYRK
+        </span>
+      </div>
+      <br/>
+      <div fxLayout.gt-md="row">
+        <div style="color:#000; cursor: pointer; font-weight: 700 !important" fxFlex="80" (click)="setAmount()">Available: <span style="color: #026bfb">{{balance}} ZYRK</span></div>
+      </div>
+    </div>
+    <div class="sendto">
+      <p style="font-weight: 700 !important">Address to Send:</p>
+      <div fxLayout.gt-md="row" class="address-div">
+        <input class="modalinput" matInput fxFlex="100" placeholder="Address" [(ngModel)]="sendToZyrk.address" (onfocusout)="getFees()" (keyup)="getFees()" (input)="addressEdited()" [disabled]="isAddressSelected">
+      </div>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" matInput fxFlex="100" placeholder="Address Label" [(ngModel)]="addressLabel" (keyup)="labelChanged()">
+      </div>
+    </div>
+    <div class="sendto">
+      <p style="font-weight: 700 !important">Wallet Password:</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" matInput fxFlex="100" [type]="showPassword ? 'text' : 'password'" placeholder="Wallet Password" [(ngModel)]="walletPassword" required>
+      </div>
+      <div class="saveaddress">
+        <mat-checkbox [(ngModel)]="sendToZyrk.subtractFeeFromAmount" (ngModelChange)="getSendingAmount()">Subtract fee from total amount?</mat-checkbox>
+      </div>
+    </div>
+  </div>
+  <div class="modaldetails">
+    <div>
+      <div class="transdetail" fxLayout.gt-md="row">
+        <span class="modallabel" fxFlex="70">Sending</span>
+        <span class="zyrklabel" fxFlex="30" fxLayoutAlign="end">{{amount}}
+          <span>&nbsp;ZYRK</span>
+        </span>
+      </div>
+      <div class="transdetail" fxLayout.gt-md="row">
+        <span class="modallabel" fxFlex="70">Fee</span>
+        <span class="zyrklabel" fxFlex="30" fxLayoutAlign="end">
+          <span>{{fees | number: '.8'}} ZYRK</span>
+        </span>
+      </div>
+      <div class="transtotal" fxLayout.gt-md="row">
+        <span fxFlex="70">Total</span>
+        <span fxFlex="30" fxLayoutAlign="end">
+          {{total | number: '.8'}}
+          <span>&nbsp;ZYRK</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="send buttons" fxLayout="row" fxLayoutAlign="space-between">
+    <button class="btn" style="border-radius: 2px;" fxFlex="40" (click)="close()">Cancel</button>
+    <button class="btn" style="border-radius: 2px; background-color: #026bfb !important; border-color: #026bfb !important; color: #fff !important" fxFlex="40" (click)="sendData()">Send</button>
+  </div>
+</div>
+
+<div *ngIf="data.walletType === 'withdraw'" class="vault">
+  <div class="modalheader">
+    <h5 fxFlex="50">Convert Zyop to Zyrk</h5>
+    <div _ngcontent-c7="" class="divider"></div>
+  </div>
+  <br/>
+  <div class="modalcontent">
+    <div class="unanonymize-options">
+      <input type="radio" name="unanonymize-mywallet" id="unanonymize-mywallet" [checked]="unanonymizeToMyWallet == 1"/>
+      <label (click)="unanonymizeToMyWallet = 1">Send Zyrk back to my Wallet</label><br/>
+      <input type="radio" name="unanonymize-other" id="unanonymize-other" [checked]="unanonymizeToMyWallet == 0" />
+      <label (click)="unanonymizeToMyWallet = 0">Send Zyrk to another Address</label><br/>
+      <input type="radio" name="unanonymize-other" id="unanonymize-other" [checked]="unanonymizeToMyWallet == 2" />
+      <label (click)="unanonymizeToMyWallet = 2">Send to a Zyop key</label><br/>
+    </div>
+    <br/>
+    <div class="sendto" *ngIf="unanonymizeToMyWallet == 0">
+      <p style="font-weight: 700">Zyrk Address:</p>
+      <div fxLayout.gt-md="row" class="address-div">
+        <input class="modalinput" matInput fxFlex="100" placeholder="Enter Zyrk Address" value="NXefjjohhdofhgij" [(ngModel)]="sendToZyrk.address">
+        <mat-select [(ngModel)]="sendToZyrk.address" (change)="addressSelected()">
+          <mat-option *ngFor="let acc of accountData" value={{acc.address}}> {{acc.name}} </mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="sendto" *ngIf="unanonymizeToMyWallet == 2">
+      <p style="font-weight: 700">Zyop Key:</p>
+      <div fxLayout.gt-md="row" class="address-div">
+        <input class="modalinput" matInput fxFlex="100" placeholder="Enter Zyop Key" value="NXefjjohhdofhgij" [(ngModel)]="anonymizeKey">
+      </div>
+    </div>
+    <div class="amountsend">
+      <p style="font-weight: 700">Amount:</p>
+      <div fxLayout.gt-md="row" class="send-div">
+        <input class="modalinput" type="number" step="1" matInput fxFlex="100" placeholder="Enter Amount" value="data.balance" (ngModelChange)="getSendingAmount($event)"
+          [(ngModel)]="sendToZyrk.amount" onkeypress="return (event.chaCode == 8 || event.charCode == 0 || event.charCode ==13) ? null : event.charCode >= 48 && event.charCode <= 57">
+        <span class="input-end-text">
+          ZYRK
+        </span>
+      </div>
+    </div>
+    <div class="sendto">
+      <p style="font-weight: 700">Wallet Password:</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" matInput fxFlex="100" [type]="showPassword ? 'text' : 'password'" placeholder="Enter Password" [(ngModel)]="walletPassword" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="send buttons" fxLayout="row" fxLayoutAlign="space-between">
+    <button class="btn" style="border-radius: 2px;" fxFlex="40" (click)="close()">Cancel</button>
+    <button class="btn" style="border-radius: 2px;" fxFlex="40" >DISABLED</button>
+  </div>
+</div>

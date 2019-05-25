@@ -1,0 +1,15 @@
+<mat-drawer-container style="height: 100%">
+  <mat-drawer-content class="content" style="padding: 0 35px !important; height: 100%">
+    <page-header heading="Settings" [navbar]="help"></page-header>
+    <div class="settings">
+      <mat-tab-group>
+        <mat-tab label="CONSOLE">
+          <app-console></app-console>
+        </mat-tab>
+        <mat-tab label="SECURITY">
+          <app-security></app-security>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

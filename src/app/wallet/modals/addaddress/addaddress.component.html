@@ -1,0 +1,23 @@
+<div class="processing-trans">
+  <div class="modalcontent">
+    <h5 fxFlex="50">{{ data.type != 'add' ? 'Edit Address' : 'Add a New Address' }}</h5>
+    <div _ngcontent-c7="" class="divider"></div>
+    <div class="amountsend">
+      <p class="htxt">Label</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" fxFlex="100" placeholder="Please enter a label for Zyrk Address" [(ngModel)]="addAddress.account">
+      </div>
+    </div>
+    <div class="amountsend">
+      <p class="htxt">Address</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" fxFlex="100" placeholder="Destination Address" [(ngModel)]="addAddress.address" [disabled]="data.type == 'receive'">
+      </div>
+    </div>
+    
+    <div class="send buttons" fxLayout="row" fxLayoutAlign="space-between">
+      <button class="btn" style="border-radius: 2px;" fxFlex="40" (click)="cancel()">Cancel</button>
+      <button class="btn" style="border-radius: 2px; background-color: #026bfb !important; border-color: #026bfb !important; color: #fff !important" fxFlex="40" (click)="save()">Add Address</button>
+    </div>
+  </div>
+</div>

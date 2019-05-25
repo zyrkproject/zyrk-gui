@@ -1,0 +1,63 @@
+<mat-drawer-container style="height: 100%">
+  <mat-drawer #help position="end" mode="over" disableClose="true" class="sidebar">
+    <help-bar [navbar]="help" [faq]="faq"></help-bar>
+  </mat-drawer>
+  <mat-drawer-content style="padding: 0 35px !important; height: 100%">
+    <page-header heading="Masternodes" [navbar]="help"></page-header>
+    <br/>
+    <p class="desc" style="text-align: center; color: #97afd5! important">
+      Lock an amount of Zyrk you hold to create a Masternode. 
+      <br/>Creating a Masternode further secures the network and provides consensus protocols for advanced features.
+      <br/>Create a passive income of Zyrk while supporting the network and holding a "vote" for network consensus related items. 
+      <br/><a style=" color: #f42f54!important" href="https://github.com/zyrkproject/masternode-install" target="_blank">Learn more</a>
+    </p>
+    <div class="balance-row" fxLayout.gt-md="row" fxLayout.lt-md="row" fxLayoutAlign="center start" fxLayoutGap="3%" fxFlexOrder.lt-md="3">
+      <div class="container container-xxl">
+        <div class="nk-block">
+          <div class="align-items-center gutter-vr-50px">
+            <ul class="chart-data-s2 row">
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">{{ masterNodeBalance }} <small>ZYRK</small></span>
+                  <span class="chart-info">
+                    <span class="chart-percent">My Locked</span>
+                    <span class="chart-sublabel" style="font-size: 12px">({{BTCmasternodebalance | number: '.4'}} BTC)</span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">{{ masterNodeCount }}</span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Masternodes</span>
+                    <span class="chart-sublabel" style="font-size: 12px">(Online)</span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">{{roi}} <small>%</small></span>
+                  <span class="chart-info">
+                    <span class="chart-percent">ROI</span>
+                    <span class="chart-sublabel" style="font-size: 12px"></span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <a routerLink="../../multinodes/all-master-node" (click)="routerLink='masternode'" style="color:#026bfb !important; cursor: pointer;" class="chart-label">View Masternodes</a>
+                  <br />
+                  <a (click)="setupNewNode()" style="color:#28a745 !important; cursor: pointer" class="chart-label">Create Masternode</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="text-uppercase" style="color: #fff !important; padding-top: 50px">My Masternodes</h5>
+    <br />
+    <app-master-node [masterNodes]="masterNodes"></app-master-node>
+  </mat-drawer-content>
+</mat-drawer-container>

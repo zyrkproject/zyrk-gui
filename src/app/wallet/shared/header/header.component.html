@@ -1,0 +1,27 @@
+<div class="header" fxLayout="row" fxLayoutGap="5%">
+
+  <div fxFlex="60" fxFlexOrder="1">
+    <h5 class="text-uppercase" style="color: #fff">{{ heading }}</h5>
+  </div>
+
+  <div class="actions" fxFlex="40" fxLayoutAlign="end center" fxFlexOrder="2">
+    <button *ngIf="showFilters" style="border-radius: 5px; background-color: #026bfb !important; border-color: #026bfb !important; color: #fff !important" class="btn btn-auto btn-sm" (click)="toggleFilter()">
+      Filter
+    </button>
+    <button *ngIf="showFilters" style="border-radius: 5px; background-color: #026bfb !important; border-color: #026bfb !important; color: #fff !important" class="btn btn-auto btn-sm" (click)="downloadHistory()">
+      Save
+    </button>
+    <button *ngIf="showAddress" style="border-radius: 5px; background-color: #026bfb !important; border-color: #026bfb !important; color: #fff !important" class="btn btn-auto btn-sm" (click)="openAddress()">
+      Add
+    </button>
+    <button *ngIf="showAddress" style="border-radius: 5px; background-color: #026bfb !important; border-color: #026bfb !important; color: #fff !important" class="btn btn-auto btn-sm" (click)="openReceive('wallet')">
+      Create
+    </button>
+    <button style="border-radius: 5px;" class="btn btn-auto btn-sm" (click)="openSend('wallet')">
+      Send
+    </button>
+    <button style="border-radius: 5px;" class="btn btn-outline btn-auto btn-sm" (click)="openReceive('wallet')">
+      Receive
+    </button>
+  </div>
+</div>

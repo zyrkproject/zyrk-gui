@@ -1,0 +1,88 @@
+<mat-table [dataSource]="dataSource" *ngIf="!display.recent" class="data-table tranx-table dataTable no-footer" style="min-height: 100% !important">
+  <ng-container matColumnDef="Date" cdkColumnDef="Date">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+      <mat-cell class="tranx-no" *matCellDef="let element">
+        <span style="color: #fff">{{element.time * 1000 | date: 'dd MMM yy'}}</span><br/>
+        <small style="color: #97afd5! important">{{element.time * 1000 | date: 'HH:mm'}}</small>
+      </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Type" cdkColumnDef="Type">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+    <mat-cell class="type tranx-no" *matCellDef="let element">
+        <span style="color: #fff; text-transform: none" *ngIf="element.category == 'send'">Sent ZYRK<br/>
+          <span class="pull-right" style="text-transform: none; color: #97afd5! important">Details...</span>
+        </span>
+        <span style="color: #fff; text-transform: none" *ngIf="element.category !== 'send'">Received ZYRK<br/>
+          <span class="pull-right" style="text-transform: none; color: #97afd5! important">Details...</span>
+        </span>
+    </mat-cell>
+  </ng-container>
+  
+
+  <ng-container matColumnDef="Amount" cdkColumnDef="Amount">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+    <mat-cell class="amount" *matCellDef="let element">
+        <span style="color: #fff">{{ element.amount | number}} ZYRK </span>
+    </mat-cell>
+  </ng-container>
+  
+  <ng-container matColumnDef="Address" cdkColumnDef="Address">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
+    <mat-cell class="address" *matCellDef="let element">
+      <span *ngIf="element.label != undefined" style="text-transform: none; color: #fff !important">{{element.category == 'send' ? 'To: ' : 'From: '}} <span style="text-transform: none;">{{element.label == '' ? element.address : element.label}}</span></span>
+      <span *ngIf="element.label == undefined" style="text-transform: none;">{{element.category == 'send' ? 'To: ' : 'From: '}} <span style="text-transform: none;">{{element.category == 'send' ? 'Zyop ' : 'Zyop '}}</span></span>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Status" cdkColumnDef="Status">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+    <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+        <span style="color: #28a745; text-transform: none;" *ngIf="element.confirmations > 5">Confirmed <span class="pull-right" style="text-transform: none; color: #97afd5! important">{{element.confirmations}} Confirms</span></span>
+        <span style="color: #ffc107; text-transform: none;" *ngIf="element.confirmations < 6">Pending <span class="pull-right" style="text-transform: none; color: #97afd5! important">{{element.confirmations}} Confirms</span></span>
+    </mat-cell>
+  </ng-container>
+
+
+
+  <mat-header-row [fxShow]="display.header" *matHeaderRowDef="display.columns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: display.columns;" class="transaction-row" (click)="showTransactionInModal(row)"></mat-row>
+</mat-table>
+
+<mat-table [dataSource]="dataSource" *ngIf="display.recent" class="data-table tranx-table dataTable no-footer">
+  <ng-container matColumnDef="type" cdkColumnDef="type">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+    <mat-cell class="type tranx-no" *matCellDef="let element">
+      <span style="color: #fff; text-transform: none" *ngIf="element.category == 'send'">Sent ZYRK<br/>
+        <span style="color: #97afd5! important; text-transform: none !important;">{{element.label == '' ? element.address : element.label}}</span>
+      </span>
+      <span style="color: #fff; text-transform: none" *ngIf="element.category !== 'send'">Received ZYRK<br/>
+        <span style="color: #97afd5! important; text-transform: none !important;">{{element.label == '' ? element.address : element.label}}</span>
+      </span>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="amount" cdkColumnDef="amount">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+    <mat-cell class="amount" *matCellDef="let element">
+        <span style="color: #fff">{{ element.amount | number}} ZYRK <span class="pull-right" style="text-transform: none; color: #97afd5! important">Details...</span></span>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="status" cdkColumnDef="status">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+    <mat-cell class="tranx-no" *matCellDef="let element" (click)="$event.stopPropagation()">
+      <span style="color: #28a745; text-transform: none;" *ngIf="element.confirmations > 5">Confirmed <span class="pull-right" style="text-transform: none; color: #97afd5! important">{{element.confirmations}} Confirms</span></span>
+      <span style="color: #ffc107; text-transform: none;" *ngIf="element.confirmations < 6">Pending <span class="pull-right" style="text-transform: none; color: #97afd5! important">{{element.confirmations}} Confirms</span></span>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="date" cdkColumnDef="date">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+    <mat-cell class="tranx-no" *matCellDef="let element">
+        <span style="color: #fff">{{element.time * 1000 | date: 'dd MMM yy'}}</span><br/>
+        <small style="color: #97afd5! important">{{element.time * 1000 | date: 'HH:mm'}}</small>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row [fxShow]="display.header" *matHeaderRowDef="display.columns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: display.columns;" (click)="showTransactionInModal(row)"></mat-row>
+</mat-table>

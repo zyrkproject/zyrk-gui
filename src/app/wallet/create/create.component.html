@@ -1,0 +1,66 @@
+<mat-drawer-container fullscreen>
+  <mat-drawer position="end" mode="side" opened class="sidebar" fxLayout="column" style="background: #0f1932 !important;">
+
+    <div class="content" [fxFlex]="85" style="max-height: 75% !important;">
+      <div>
+        <div class="text" style="color: #97afd5!important">
+          Welcome to the Zyrk GUI+
+        </div>
+        <div class="text" style="color: #97afd5!important">
+          You are seeing this message if your wallet is not currently encrypted.
+          In order to use this wallet interface your wallet must be encrypted.
+        </div>
+        <div class="text" style="color: #97afd5!important">
+          Please ensure to make a backup of your wallet.dat as once it is encrypted you must have your password to access your wallet.
+        </div>
+        <div class="text" style="color: #97afd5!important">
+          If you do not wish to encrypt your wallet please close Zyrk GUI+ now and use Zyrk Core.
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+
+      <div fxLayout="row">
+        <mat-checkbox style="padding-right: 5px" [(ngModel)]="termsChecked" class="termsCheck"></mat-checkbox>I have created a backup of my wallet file and understand that if I loose my password I will loose all funds associated with this wallet.
+      </div>
+      <br/>
+      <div fxLayout="row">
+        <button fxFlex="100" class="btn" style="border-radius: 2px; background-color: #026bfb !important; border-color: #026bfb !important; color: #fff !important" (click)="encryptWallet()" [disabled]="! termsChecked">
+          Encrypt Wallet
+        </button>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content class="content" style="background-image: url(./assets/icons/welcome.png); background-repeat: no-repeat; background-position-x: -175px; ">
+
+    <div>
+      <div fxLayout="row">
+        <div class="back-button" fxFlex="15">
+        </div>
+
+        <div class="text" fxFlex="70">
+          <h5 class="title" style="color: #fff;">Encrypt your Wallet</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="text">
+        <p>
+          <mat-form-field class="password">
+            <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Enter Password"
+                    [(ngModel)]="walletNewPassword" required>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="password">
+            <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Confirm Password"
+                    [(ngModel)]="walletRepeatPassword" required>
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

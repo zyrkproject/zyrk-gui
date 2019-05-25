@@ -1,0 +1,122 @@
+<mat-drawer-container>
+  <mat-drawer #help position="end" mode="over" disableClose="true" class="sidebar">
+    <help-bar [navbar]="help" [faq]="faq"></help-bar>
+  </mat-drawer>
+
+  <mat-drawer-content class="overview" #overview>
+    <page-header heading="Overview" [navbar]="help" [overview]="this"></page-header>
+    <div class="balance-row" fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="center start" fxLayoutGap="3%" fxFlexOrder.lt-md="3">
+      <div class="container container-xxl">
+        <div class="nk-block">
+          <div class="align-items-center gutter-vr-50px">
+            <ul class="chart-data-s2 row">
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">{{walletInfo.balance}} <small>ZYRK</small></span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Available</span>
+                    <span class="chart-sublabel" style="font-size: 12px">({{BTCwalletbalance | number: '.4'}} BTC)</span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">{{ walletInfo.unconfirmed_balance | number: '.4'}} <small>ZYRK</small></span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Pending</span>
+                   <span class="chart-sublabel" style="font-size: 12px"></span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">{{ walletInfo.immature_balance | number: '.4'}} <small>ZYRK</small></span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Immature</span>
+                    <span class="chart-sublabel" style="font-size: 12px"></span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">{{ walletInfo.anonymize_vault | number: '.4'}} <small>ZYOP</small></span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Total</span>
+                    <span class="chart-sublabel" style="font-size: 12px">({{BTCvaultbalance | number: '.4'}} BTC)</span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+            <div class="col-sm-12 col-lg-12" style="padding-left: 0px !important; margin-bottom: -10px; padding-top: 10px !important">
+              <h5 class="text-uppercase" style="color: #fff; padding-top: 10px">Recent Transactions</h5>
+            </div>
+            <div class="col-sm-12 col-lg-12 row" style="padding-left: 0px !important; padding-right: 0px !important; padding-top: 0px !important; margin-right: 0px; margin-left: 0px">
+              <div class="col-sm-12 col-lg-9" style="padding-left: 0px !important; padding-right: 0px">
+                <transaction-table [recent]="true" [display]="{numTransactions: 7, columns: transactionColumns, header: false, recent: true}"></transaction-table>
+              </div>
+              <div class="col-sm-12 col-lg-3" style="padding-right: 0px">
+                <ul class="chart-data-s2">
+                  <li style="width: 100%">
+                    <div class="chart-data-item">
+                      <span style="color:#fff !important" class="chart-label">{{balanceInUSD | currency:"USD":'symbol'}}</span>
+                      <span class="chart-info">
+                        <span class="chart-percent">Current Price</span>
+                        <span class="chart-sublabel" style="font-size: 12px">(USD)</span>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+                <br/>
+                <ul class="chart-data-s2">
+                  <li style="width: 100%">
+                    <div class="chart-data-item">
+                      <span style="color:#fff !important" class="chart-label">{{enabledNodeCount}}</span>
+                      <span class="chart-info">
+                        <span class="chart-percent">Masternodes</span>
+                        <span class="chart-sublabel" style="font-size: 12px">(Online)</span>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+                <br/>
+                <ul class="chart-data-s2">
+                  <li style="width: 100%">
+                    <div class="chart-data-item">
+                      <span style="color:#fff !important" class="chart-label">{{currentBlock}}</span>
+                      <span class="chart-info">
+                        <span class="chart-percent">Current Block</span>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+                <br/>
+                <ul class="chart-data-s2">
+                  <li style="width: 100%">
+                    <div class="chart-data-item">
+                      <span style="color:#fff !important" class="chart-label">{{connections}}</span>
+                      <span class="chart-info">
+                        <span class="chart-percent">Connections</span>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+                <br/>
+                <ul class="chart-data-s2">
+                  <li style="width: 100%">
+                    <div class="chart-data-item">
+                      <span style="color:#f42f54 !important; text-transform: capitalize" class="chart-label">{{torStatus}}</span>
+                      <span class="chart-info">
+                        <span class="chart-percent">TOR</span>
+                        <span class="chart-sublabel" style="font-size: 12px">(Status)</span>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

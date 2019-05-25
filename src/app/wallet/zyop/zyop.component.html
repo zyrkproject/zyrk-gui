@@ -1,0 +1,65 @@
+<mat-drawer-container style="height: 100%"> 
+  <mat-drawer-content class="zyop" style="padding: 0 35px !important; height: 100%">
+    <page-header heading="Zyop" [navbar]="help"></page-header>
+    <br/>
+    <p class="desc" style="text-align: center; color: #97afd5! important">
+      Converting Zyrk to Zyop will make your Zyrk completely anonymous and private to everyone except you.
+      <br/>Zyop converted back to Zyrk is untraceable and secure. You can also send Zyop to someone else using a 'Zyop Key'
+      <br/>Each Zyop key can only be used once, you can generate one below.
+      <br/><a style="color: #f42f54! important; cursor: pointer;" (click)="openAnonymously()">Receive Zyop</a>
+    </p>
+    <div class="balance-row" fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="center start" fxLayoutGap="3%" fxFlexOrder.lt-md="3">
+      <div class="container container-xxl">
+        <div class="nk-block">
+          <div class="align-items-center gutter-vr-50px">
+            <ul class="chart-data-s2 row">
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">{{walletInfo.anonymize_vault}} <small>ZYOP</small></span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Balance</span>
+                    <span class="chart-sublabel" style="font-size: 12px">({{BTCbalance | number: '.4'}} BTC)</span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">{{walletInfo.anonymize_vault_unconfirmed}} <small>ZYOP</small></span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Pending</span>
+                    <span class="chart-sublabel" style="font-size: 12px">({{BTCpending | number: '.4'}} BTC)</span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div style="text-align: center" class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">
+                    <img style="height: 25px" class="cursor-pointer" src="./assets/icons/SVG/arrow-down-md.svg" alt="Deposit" fxFlex="100" (click)="openDeposit('vault')">
+                  </span>
+                  <span class="chart-info">
+                      <span class="chart-percent">Convert Zyrk</span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div style="text-align: center" class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">
+                    <img style="height: 25px" class="cursor-pointer" src="./assets/icons/SVG/arrow-up-md.svg" alt="Withdraw" fxFlex="100" (click)="openWithdraw('withdraw')">
+                  </span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Convert Zyop</span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="text-uppercase" style="color: #fff !important; padding-top: 50px">Recent Zyop Transactions</h5>
+
+    <app-anonymize-vault-transaction [display]="{columns: transactionColumns, header: false}"></app-anonymize-vault-transaction>
+  </mat-drawer-content>
+</mat-drawer-container>
+

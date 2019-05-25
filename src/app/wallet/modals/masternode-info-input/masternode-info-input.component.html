@@ -1,0 +1,52 @@
+<div class="processing-trans">
+  <div class="modalcontent">
+    <h5 fxFlex="50">Create Masternode</h5>
+    <div _ngcontent-c7="" class="divider"></div>
+
+    <div class="item">
+      <p class="htxt">VPS IP Address:</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" placeholder="Enter VPS IP Address" fxFlex="100" [type]="'text'" [(ngModel)]="masternodeInfo.ip_address">
+      </div>
+    </div>
+
+    <div class="item">
+      <p class="htxt">VPS Password (root):</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" placeholder="Enter VPS Password" fxFlex="100" [type]="'password'" [(ngModel)]="masternodeInfo.password">
+      </div>
+    </div>
+
+    <div class="item">
+      <p class="htxt">Masternode Key</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" placeholder="Enter Masternode Key (masternode genkey)" fxFlex="100" [type]="'text'" [(ngModel)]="masternodeInfo.masternode_key">
+      </div>
+    </div>
+
+    <div class="item">
+      <p class="htxt">Masternode Alias</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" placeholder="Enter an Alias" fxFlex="100" [type]="'text'" [(ngModel)]="masternodeInfo.aliasName">
+      </div>
+    </div>
+
+    <div class="item">
+      <p class="htxt">Transaction Hash:</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" placeholder="Enter Transaction Hash (masternode outputs)" fxFlex="100" [type]="'text'" [(ngModel)]="masternodeInfo.transactionHash">
+      </div>
+    </div>
+
+    <div class="item">
+      <p class="htxt">Transaction Output:</p>
+      <div fxLayout.gt-md="row">
+        <input class="modalinput" placeholder="Enter Transaction Output (masternode outputs)" fxFlex="100" [type]="'text'" [(ngModel)]="masternodeInfo.transactionOutput">
+      </div>
+    </div>
+
+    <div class="confirm buttons" fxLayout="row" fxLayoutAlign="space-between">
+      <button class="btn" style="border-radius: 2px; background-color: #026bfb !important; border-color: #026bfb !important; color: #fff !important" fxFlex="40" (click)="start()">Create</button>
+    </div>
+  </div>
+</div>

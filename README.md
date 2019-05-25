@@ -7,3 +7,28 @@
 # Zyrk GUI+
 ***
 
+## Development
+
+### Boostrapping:
+
+* Download + Install [Node.js](https://nodejs.org/) 6.4—7.10
+* Download + Install [git](https://git-scm.com/)
+* Download + Install [yarn](https://yarnpkg.com/)
+
+```bash
+git clone https://github.com/zyrkproject/zyrk-gui
+cd zyrk-gui
+yarn global add windows-build-tools
+yarn install
+```
+
+### Start Electron
+
+* `yarn run start:electron`
+
+### Package Electron
+
+* `yarn run package:win` – Windows
+* `yarn run package:mac` – OSX
+* `yarn run package:linux` – Linux
+

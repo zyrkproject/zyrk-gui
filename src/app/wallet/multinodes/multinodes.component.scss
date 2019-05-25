@@ -1,0 +1,62 @@
+@import '../shared/shared';
+
+.desc {
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0px 0px 48px 0px;
+}
+
+.balance-card {
+    
+  &:hover {
+    cursor: pointer !important;
+  }
+}
+
+mat-card {
+  color: $text;
+  font-family: $font;
+  
+  .description {
+    font-size: 16px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+  }
+
+  .big {
+    font-size: 24px;
+    @media screen and (min-width: 1500px) {
+      font-size: 28px;
+    }
+  }
+
+  .medium {
+    font-size: 13px;
+    @media screen and (min-width: 1500px) {
+      font-size: 15px;
+    }
+  }
+
+  .small {
+    color: $color-grey;
+    font-size: 11px;
+    @media screen and (min-width: 1500px) {
+      font-size: 13px;
+    }
+  }
+
+  .divider {
+    border-top: 1px solid darken($color-light-grey, 5%);
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  
+}
+
+.tableHead {
+    margin-top: 61px;
+    font-weight: 600;
+  }
+

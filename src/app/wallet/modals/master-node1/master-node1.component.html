@@ -1,0 +1,63 @@
+<div class="viewNode">
+  <div class="modalcontent">
+    <h5 fxFlex="50">{{masternode.alias}}</h5>
+    <div _ngcontent-c7="" class="divider"></div>
+    <br />
+    <div class="content-div">
+      <div class="amountsend">
+        <div class="recipientdtls" fxLayout="row">
+          <strong style="font-weight: 700" class="recipient" fxFlex="70">Masternode IP Address:</strong>
+        </div>
+
+        <div fxLayout.gt-md="row" fxLayoutGap="5px">
+          <p class="modalinput" fxFlex="75">{{masternode.address}}</p>
+        </div>
+      </div>
+      <div _ngcontent-c7="" class="divider"></div>
+      <div class="amountsend">
+        <div class="recipientdtls" fxLayout="row">
+          <strong style="font-weight: 700" class="recipient" fxFlex="70">Last Seen:</strong>
+        </div>
+  
+        <div fxLayout.gt-md="row" fxLayoutGap="5px">
+          <p class="modalinput" fxFlex="75">{{masternode.lastSeenDate}}</p>
+        </div>
+      </div>
+      <div _ngcontent-c7="" class="divider"></div>
+      <div class="amountsend">
+        <div class="recipientdtls" fxLayout="row">
+          <strong style="font-weight: 700" class="recipient" fxFlex="70">Masternode Address:</strong>
+        </div>
+    
+        <div fxLayout.gt-md="row" fxLayoutGap="5px">
+          <p class="modalinput" fxFlex="75">{{masternode.paymentAddress}}</p>
+        </div>
+      </div>
+      <div _ngcontent-c7="" class="divider"></div>
+      <div class="amountsend">
+        <div class="recipientdtls" fxLayout="row">
+          <strong style="font-weight: 700" class="recipient" fxFlex="70">Masternode Key:</strong>
+        </div>
+      
+        <div fxLayout.gt-md="row" fxLayoutGap="5px">
+          <p class="modalinput" fxFlex="75">{{masternode.privateKey}}</p>
+        </div>
+      </div>
+      <div _ngcontent-c7="" class="divider"></div>
+      <div class="amountsend">
+        <div class="recipientdtls" fxLayout="row">
+          <strong style="font-weight: 700" class="recipient" fxFlex="70">Protocol:</strong>
+        </div>
+       
+        <div fxLayout.gt-md="row" fxLayoutGap="5px">
+          <p class="modalinput" fxFlex="75">{{masternode.protocolVersion}}</p>
+        </div>
+      </div>
+      <div _ngcontent-c7="" class="divider"></div>
+    </div>
+    <div class="send buttons" fxLayout="row" fxLayoutAlign="center center">
+      <button class="btn" style="border-radius: 2px; background-color: #026bfb !important; border-color: #026bfb !important; color: #fff !important" fxFlex="40" mat-raised-button (click)="close()">Close</button>
+    </div>
+
+  </div>
+</div>

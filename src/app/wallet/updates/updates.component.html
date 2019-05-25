@@ -1,0 +1,44 @@
+<mat-drawer-container style="height: 100%">
+  <mat-drawer-content class="updates" style="padding: 0 35px !important; height: 100%">
+    <page-header heading="Check for Updates" [navbar]="help"></page-header>    
+    <div class="updates-content" fxLayout="column">
+      <img class="updates-img" *ngIf="updated" src="./assets/icons/SVG/verified.svg">
+      <fa-icon [icon]="faTimesCircle" *ngIf="!updated" class="updates-not"></fa-icon>
+      <br/>
+      <p class="updates-description" style="color: #fff !important" *ngIf="updated">You are up to date. You have the latest version installed!</p>
+      <p class="updates-description" style="color: #fff !important" *ngIf="!updated">There is a new update available for download <a style="color: #f42f54" href="https://github.com/zyrkproject/zyrk-gui/releases">here</a>.</p>
+    </div>
+    <br />
+    <div class="version-content">
+      <div class="container container-xxl">
+        <div class="nk-block">
+          <div class="align-items-center gutter-vr-50px">
+            <ul class="chart-data-s2 row">
+              <li class="col-sm-12 col-lg-3">
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">v{{guiVersion}}</span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Zyrk GUI+ Version</span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3 active">
+                <div class="chart-data-item">
+                  <span style="color:#fff !important" class="chart-label">v{{daemonVersion}}</span>
+                  <span class="chart-info">
+                    <span class="chart-percent">Zyrk Daemon Version</span>
+                   <span class="chart-sublabel" style="font-size: 12px"></span>
+                  </span>
+                </div>
+              </li>
+              <li class="col-sm-12 col-lg-3">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

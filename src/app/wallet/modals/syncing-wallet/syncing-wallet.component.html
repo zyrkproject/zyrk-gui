@@ -1,0 +1,23 @@
+<div class="syncing-wallet">
+  <div class="modalcontent" *ngIf="blockchaininfo">
+    <h5 fxFlex="50">Syncing with the Zyrk Network</h5>
+    <div _ngcontent-c7="" class="divider"></div>    
+
+    <div style="padding-top: 100px;" class="container" *ngIf="blockchaininfo.headers - blockchaininfo.blocks != 0">
+      <div class="centered"><span style="color: #ffc107 !important" class="block-number">{{ blockchaininfo.headers - blockchaininfo.blocks }}</span><span>remaining.</span></div>
+    </div>
+
+    <div style="padding-top: 100px;" class="container" *ngIf="blockchaininfo.headers - blockchaininfo.blocks == 0 && blockchaininfo.verificationprogress != 1">
+      <div class="centered"><span style="color: #ffc107 !important" class="block-number">Syncing Network </span></div>
+    </div>
+
+    <div style="padding-top: 100px;" class="container" *ngIf="blockchaininfo.headers - blockchaininfo.blocks == 0 && blockchaininfo.verificationprogress == 1">
+      <div class="centered"><span style="color: #28a745 !important" class="block-number">Synced Successfully </span></div>
+    </div>
+
+    <div class="estimated-time" fxLayout="column" fxLayoutAlign="center" *ngIf="blockchaininfo.verificationprogress != 1">
+      <div>Estimated Time</div>
+      <div>{{estimatedTime}} left</div>
+    </div>
+  </div>
+</div>

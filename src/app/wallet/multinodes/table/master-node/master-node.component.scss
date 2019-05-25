@@ -1,0 +1,37 @@
+.matHeader{
+  /*margin-right: 150px;*/
+}
+.matCell{
+  /*padding-right: 125px;*/
+}
+.matCell1{
+  /*padding-right: 95px;*/
+  cursor: pointer;
+}
+.confirm-ok {
+  color: orange;
+}
+
+.mat-column-Name {
+  flex: 0 0 20%;
+}
+
+.mat-column-Status {
+  flex: 0 0 20%;
+}
+
+.mat-column-Payee {
+  flex: 0 0 30%;
+}
+
+.mat-column-Detail {
+  flex: 0 0 10%;
+}
+
+.mat-column-Start {
+  flex: 0 0 10%;
+}
+
+.mat-column-Update {
+  flex: 0 0 10%;
+}

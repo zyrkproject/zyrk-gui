@@ -1,0 +1,24 @@
+<div class="console-modal">
+  <div>
+    <div #debug class="console-modal-form" (scroll)="onScroll()" style="background: #0f1932">
+      <div class="intro-text" style="background: #0f1932">
+        <p style="color: #97afd5! important">
+          Welcome to the Zyrk RPC console.<br>
+          Type <code>help</code> for an overview of available commands.
+        </p>
+      </div>
+      <div class="content-modal" [ngClass]="{'input': list.type === 1}" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between start" *ngFor="let list of commandList">
+        <div fxFlex="1 1 100%" class="command">
+          <pre class="text-format" *ngIf="isJson(list.text)">{{ list.text | json }}</pre>
+          <pre class="text-format" [ngClass]="{'warn-text': list.code === -1}" *ngIf="!isJson(list.text)">{{ list.text }}</pre>
+        </div>
+        <div fxFlex="0 0 55px" class="time" *ngIf="list.type === 1">
+          {{ list.time }}
+        </div>
+      </div>
+    </div>
+    <div class="command-actions">
+      <input style="width:100% !important; border-radius: 0px !important" [(ngModel)]="command" placeholder="Enter 'help' for an overview of available commands" autofocus>
+    </div>
+  </div>
+</div>

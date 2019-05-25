@@ -1,0 +1,43 @@
+<mat-drawer-container style="height: 100%">
+  <mat-drawer-content style="padding: 0 35px !important; height: 100%">
+    <page-header heading="Masternode Network" [navbar]="help"></page-header>
+    <br />
+    <mat-table [dataSource]="dataSource"  class="data-table tranx-table dataTable no-footer" style="background: transparent !important; min-height: 100%;">
+      <ng-container matColumnDef="Address">
+        <mat-cell *matCellDef="let element" class="matCell">
+          <span style="color: #fff">IP Address:</span><br/>
+          <small style="color: #97afd5! important">{{element.IP}}</small>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Protocol">
+        <mat-cell *matCellDef="let element" class="matCell">
+          <span style="color: #fff">Protocol:</span><br/>
+          <small style="color: #97afd5! important">{{element.protocol}}</small>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Status">
+        <mat-cell *matCellDef="let element" class="matCell">
+          <span style="color: #fff">Status:</span><br/>
+          <small *ngIf="element.status === 'EXPIRED'" style="color: #f42f54! important">EXPIRED</small>
+          <small *ngIf="element.status === 'MISSING'" style="color: #f42f54! important">MISSING</small>
+          <small *ngIf="element.status === 'NEW_START_REQUIRED'" style="color: #ffc107 !important">NEW_START_REQUIRED</small>
+          <small *ngIf="element.status === 'PRE_ENABLED'" style="color: #ffc107 !important">PRE_ENABLED</small>
+          <small *ngIf="element.status === 'ENABLED'" style="color: #28a745 !important">ENABLED</small>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Last Seen">
+        <mat-cell *matCellDef="let element" class="matCell">
+          <span style="color: #fff">Last Seen:</span><br/>
+          <small style="color: #97afd5! important">{{element.lastseen * 1000 | date: 'dd MMM yy HH:mm'}}</small>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Payee">
+        <mat-cell *matCellDef="let element" class="matCell">
+          <span style="color: #fff">Pubkey:</span><br/>
+          <small style="color: #97afd5! important">{{element.payee}}</small>
+        </mat-cell>
+      </ng-container>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </mat-drawer-content>
+</mat-drawer-container>
