@@ -93,7 +93,7 @@ export class ZyopComponent implements OnInit, OnDestroy {
       forceOpen: true,
       walletType: walletType,
       balance: this.walletInfo.anonymize_vault,
-      amountInUSD: this.bitcoinprice.price_usd,
+      amountInUSD: this.bitcoinprice.USD.price,
       modalsService: this.modalsService
     };
     this.modalsService.openxSmall('send', data);
@@ -125,9 +125,9 @@ export class ZyopComponent implements OnInit, OnDestroy {
   private getBitcoinpriceinfo() {
     this.walletServices.getBitcoin(this.bitcoinpriceInfo)
       .subscribe(bitcoinpriceInfos => {
-        this.bitcoinprice = bitcoinpriceInfos.coininfo;
-        this.balanceInBTC = this.bitcoinprice.price_btc;
-        this.balanceInUSD = this.bitcoinprice.price_usd;
+        this.bitcoinprice = bitcoinpriceInfos.quotes;
+        this.balanceInBTC = this.bitcoinprice.BTC.price;
+        this.balanceInUSD = this.bitcoinprice.USD.price;
 
         this.getBTCBalance();
         this.getUSDBalance();

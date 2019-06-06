@@ -59,9 +59,9 @@ export class MultinodesComponent implements OnInit {
         this.walletInfo = new WalletInfo(walletInfo).toJSON();
         this.walletServices.getBitcoin(this.bitcoinpriceInfo)
           .subscribe(bitcoinpriceInfos => {
-            let bitcoinprice = bitcoinpriceInfos.coininfo;
-            this.balanceInBTC = bitcoinprice.price_btc;
-            this.balanceInUSD = bitcoinprice.price_usd;
+            let bitcoinprice = bitcoinpriceInfos.quotes;
+            this.balanceInBTC = bitcoinprice.BTC.price;
+            this.balanceInUSD = bitcoinprice.USD.price;
           
             this.getBTCBalance();
             this.getUSDBalance();

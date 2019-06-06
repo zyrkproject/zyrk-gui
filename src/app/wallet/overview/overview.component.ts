@@ -101,9 +101,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
         this.walletInfo = new WalletInfo(walletInfo).toJSON();
         this.walletServices.getBitcoin(this.bitcoinpriceInfo)
           .subscribe(bitcoinpriceInfos => {
-            this.bitcoinprice = bitcoinpriceInfos.coininfo;
-            this.balanceInBTC = this.bitcoinprice.price_btc;
-            this.balanceInUSD = this.bitcoinprice.price_usd;
+            this.bitcoinprice = bitcoinpriceInfos.quotes;
+            this.balanceInBTC = this.bitcoinprice.BTC.price;
+            this.balanceInUSD = this.bitcoinprice.USD.price;
 
             this.getBTCBalance();
             this.getUSDBalance();
@@ -254,7 +254,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
       forceOpen: true,
       walletType: walletType,
       balance: this.walletInfo.balance,
-      amountInUSD: this.bitcoinprice.price_usd,
+      amountInUSD: this.bitcoinprice.USD.price,
       currency: this.currentCurrency,
       modalsService: this.modalsService
     };
