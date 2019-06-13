@@ -32,3 +32,22 @@ yarn install
 * `yarn run package:mac` – OSX
 * `yarn run package:linux` – Linux
 
+## Technologies
+
+### Libraries
+
+* [Electron](https://electronjs.org/)
+* [AngularJS](https://angularjs.org/)
+* [Karma](https://github.com/karma-runner/karma)
+* [FontAwesome](https://fontawesome.com/)
+* [Zyrkd](https://github.com/zyrkproject/zyrk-core/)
+
+### References/Copyrights
+
+* Copyright (c) 2019 [Bitcoin Core](https://github.com/bitcoin)
+* Copyright (c) 2019 [Dash Core](https://github.com/dashpay)
+* Copyright (c) 2019 [Verge Currency](https://github.com/vergecurrency)
+* Copyright (c) 2019 [NIX Platform](https://github.com/nixplatform/)
+* Copyright (c) 2019 [Particl Project](https://github.com/particl)
+
+
